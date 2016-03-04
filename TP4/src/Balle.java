@@ -1,47 +1,85 @@
 
 public class Balle {
-	
-	private double masse;
+	private double rayon = 2;
 	
 	private double x;
 	private double y;
 	private double vx;
 	private double vy;
 	
-	public Balle(double[] pos0, double[] v0, double masse_) {
-		masse = masse_;
+	/**
+	 * Constructeur de la classe Balle
+	 * 
+	 * @param 	double[]	pos0	Position initiale de la balle
+	 * @param 	double[]	v0		Vitesse initiale de la balle
+	 * @param	double		rayon	Rayon de la balle
+	 */
+	public Balle(double[] pos0, double[] v0, double rayon) {
+		this.rayon = rayon;
 		
-		x = pos0[0];
-		y = pos0[1];
+		this.x = pos0[0];
+		this.y = pos0[1];
 		
-		vx = v0[0];
-		vy = v0[1];
+		this.vx = v0[0];
+		this.vy = v0[1];
 	}
 	
-	public void move(double pas, double G) {
-		double posx = this.getPosx();
-		double posy = this.getPosy();
-		double instantSpeed = this.getInstantSpeed();
+	/**
+	 * Permet de calculer la nouvelle position de la balle
+	 * 
+	 * @param 	Espace	espace
+	 * @param 	double	pas
+	 */
+	public void move(Espace espace, double pas) {
+		//this.vx = constante
+		this.vy += espace.G * pas;
+			
+		this.x += this.vx * pas;
+		this.y += - this.vy * pas - 0.5 * espace.G * pas;
 		
-		this.setInstantSpeed(instantSpeed + G * pas);
-		this.setPosy(posy - this.getInstantSpeed() * pas);
+		if ((this.y - this.rayon) <= 0 || (this.y + this.rayon) >= espace.getHauteur()) {
+			
+			if((this.y - this.rayon) <=0)
+				this.y = this.rayon; 
+			else
+				this.y = espace.getHauteur() - this.rayon;
+			
+			this.vy = -this.vy;
+		}
+		
+		if ((this.x - this.rayon) <= 0.0 || (this.x + this.rayon) >= espace.getLongueur()) {
+			if((this.x - this.rayon) <= 0)
+				this.x = this.rayon;
+			else
+				this.x = espace.getLongueur() - this.rayon;	
+			this.vx = -this.vx;
+		}
 	}
 	
+	/**
+	 * Permet de dessiner la balle
+	 */
 	public void draw() {
+		StdDraw.clear(StdDraw.GRAY);
 		StdDraw.setPenColor(StdDraw.RED);
-		StdDraw.filledCircle(x, y, 20);
+		StdDraw.filledCircle(x, y, this.rayon);
 		StdDraw.show(50);
 	}
-	
-	public double[] getInstantSpeed() {
-		double[] instantSpeed = {vx, vy};
-		
-		return instantSpeed;
+
+	public double getVx() {
+		return vx;
 	}
 
-	public void setInstantSpeed(double[] instantSpeed) {
-		this.vx = instantSpeed[0];
-		this.vy = instantSpeed[1];
+	public void setVx(double vx) {
+		this.vx = vx;
+	}
+
+	public double getVy() {
+		return vy;
+	}
+
+	public void setVy(double vy) {
+		this.vy = vy;
 	}
 
 	public double getPosx() {
