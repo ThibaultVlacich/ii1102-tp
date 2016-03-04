@@ -1,12 +1,12 @@
 
 public class Balle {
 	private double rayon = 2;
-	
+
 	private double x;
 	private double y;
 	private double vx;
 	private double vy;
-	
+
 	/**
 	 * Constructeur de la classe Balle
 	 * 
@@ -16,14 +16,14 @@ public class Balle {
 	 */
 	public Balle(double[] pos0, double[] v0, double rayon) {
 		this.rayon = rayon;
-		
+
 		this.x = pos0[0];
 		this.y = pos0[1];
-		
+
 		this.vx = v0[0];
 		this.vy = v0[1];
 	}
-	
+
 	/**
 	 * Permet de calculer la nouvelle position de la balle
 	 * 
@@ -33,20 +33,20 @@ public class Balle {
 	public void move(Espace espace, double pas) {
 		//this.vx = constante
 		this.vy += espace.G * pas;
-			
+
 		this.x += this.vx * pas;
 		this.y += - this.vy * pas - 0.5 * espace.G * pas;
-		
+
 		if ((this.y - this.rayon) <= 0 || (this.y + this.rayon) >= espace.getHauteur()) {
-			
+
 			if((this.y - this.rayon) <=0)
 				this.y = this.rayon; 
 			else
 				this.y = espace.getHauteur() - this.rayon;
-			
+
 			this.vy = -this.vy;
 		}
-		
+
 		if ((this.x - this.rayon) <= 0.0 || (this.x + this.rayon) >= espace.getLongueur()) {
 			if((this.x - this.rayon) <= 0)
 				this.x = this.rayon;
@@ -55,7 +55,7 @@ public class Balle {
 			this.vx = -this.vx;
 		}
 	}
-	
+
 	/**
 	 * Permet de dessiner la balle
 	 */
@@ -97,5 +97,5 @@ public class Balle {
 	public void setPosy(double posy) {
 		this.y = posy;
 	}
-	
+
 }

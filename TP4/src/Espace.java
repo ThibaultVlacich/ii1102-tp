@@ -1,7 +1,7 @@
 
 public class Espace {
 	public double G = 9.81;
-	
+
 	private double hauteur;
 	private double longueur;
 
@@ -15,7 +15,7 @@ public class Espace {
 		hauteur = hauteur_;
 		longueur = longueur_;
 	}
-	
+
 	/**
 	 * Constructeur de la classe Espace
 	 * 
@@ -28,7 +28,7 @@ public class Espace {
 		hauteur = hauteur_;
 		longueur = longueur_;
 	}
-	
+
 	public double getHauteur() {
 		return hauteur;
 	}
