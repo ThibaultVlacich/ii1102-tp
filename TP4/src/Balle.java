@@ -60,10 +60,8 @@ public class Balle {
 	 * Permet de dessiner la balle
 	 */
 	public void draw() {
-		StdDraw.clear(StdDraw.GRAY);
 		StdDraw.setPenColor(StdDraw.RED);
 		StdDraw.filledCircle(x, y, this.rayon);
-		StdDraw.show(50);
 	}
 
 	public double getVx() {

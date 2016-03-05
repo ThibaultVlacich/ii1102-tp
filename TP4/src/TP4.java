@@ -1,10 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class TP4 {
 
 	static Scanner scan = new Scanner(System.in);
 
-	static Balle balle;
+	static ArrayList<Balle> balles = new ArrayList<Balle>();
 	static Espace espace;
 
 	public static void main(String[] args) {
@@ -47,7 +48,9 @@ public class TP4 {
 			} else {
 				double[] pos0 = {15.0, 45.0};
 				double[] v0   = {10.0, 10.0};
-				balle = new Balle(pos0, v0, 2.0);
+				Balle balle = new Balle(pos0, v0, 2.0);
+				
+				balles.add(balle);
 
 				espace = new Espace(50.0, 50.0);
 			}
@@ -64,10 +67,37 @@ public class TP4 {
 			} else {
 				double[] pos0 = {15.0, 45.0};
 				double[] v0   = {10.0, 10.0};
-				balle = new Balle(pos0, v0, 2.0);
-
-				espace = new Espace(50.0, 50.0);
+				Balle balle = new Balle(pos0, v0, 2.0);
+				
+				balles.add(balle);
 			}
+			
+			Boolean cont = true;
+			
+			do {
+				System.out.println("Voulez-vous ajouter une balle supplémentaires ? Y/N");
+				command = scan.next();
+				
+				if(!command.equalsIgnoreCase("Y")) {
+					cont = false;
+					break;
+				}
+				
+				System.out.println("Voulez-vous définir une balle personalisée ? Y/N");
+				command = scan.next(); 
+
+				if(command.equalsIgnoreCase("Y")) {
+					definirBalle();
+				} else {
+					double[] pos0 = {20.0, 40.0};
+					double[] v0   = {10.0, 10.0};
+					Balle balle = new Balle(pos0, v0, 3.0);
+					
+					balles.add(balle);
+
+					espace = new Espace(50.0, 50.0);
+				}
+			} while(cont);
 
 			balleSimulation();
 			break;
@@ -112,7 +142,9 @@ public class TP4 {
 
 		double[] v0 = {v0x, v0y};
 
-		balle = new Balle(pos0, v0, rayon);
+		Balle balle = new Balle(pos0, v0, rayon);
+		
+		balles.add(balle);
 	}
 
 	/**
@@ -147,10 +179,15 @@ public class TP4 {
 		StdDraw.setYscale(0, espace.getLongueur());
 
 		while(true) {
-
-			balle.move(espace, pas);
-			System.out.println("x : "+balle.getPosx()+", y : "+balle.getPosy());
-
+			int index = 1;
+			for(Balle balle: balles) {
+				balle.move(espace, pas);
+				
+				System.out.println("Balle n°"+index);
+				System.out.println("x : "+balle.getPosx()+", y : "+balle.getPosy());
+				
+				index++;
+			}
 		}
 	}
 
@@ -166,10 +203,14 @@ public class TP4 {
 		StdDraw.setYscale(0, espace.getLongueur());
 
 		while(true) {
-
-			balle.move(espace, pas);
-			balle.draw();
-
+			StdDraw.clear(StdDraw.GRAY);
+			
+			for(Balle balle: balles) {
+				balle.move(espace, pas);
+				balle.draw();
+			}
+			
+			StdDraw.show(50);
 		}
 	}
 }
