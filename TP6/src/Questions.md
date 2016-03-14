@@ -25,10 +25,6 @@ FIN SI
 * FGHEDCBA
 * GHDEFBCA
 
-```
-
-```
-
 ### Question 3.3
 #### Première fonction
 * abdeghcf
