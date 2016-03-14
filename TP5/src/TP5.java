@@ -178,7 +178,4 @@ public class TP5 {
 			file[i] = scan.nextInt();
 		}
 	}
-	
-	public void add(int n){
-	}
 }
