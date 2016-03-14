@@ -26,10 +26,12 @@ FIN SI
 * GHDEFBCA
 
 ### Question 3.3
+
 #### Première fonction
 * abdeghcf
 * acfbdegh
 * acfbehgd
+
 #### Seconde fonction
 * acfbehgd
 * cfbehgda
@@ -39,4 +41,3 @@ FIN SI
 * cfhgebda
 * fcehgdba
 * fchegdba
-*
