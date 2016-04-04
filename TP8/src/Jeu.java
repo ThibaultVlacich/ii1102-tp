@@ -6,9 +6,9 @@ public class Jeu {
 		int m = grille.length;
 		int n = grille[0].length;
 		
-		for(int i = 0; i < n; i++) {
+		for(int i = 0; i < m; i++) {
 			System.out.print("|");
-			for(int j = 0; j < m; j++) {
+			for(int j = 0; j < n; j++) {
 				if(grille[i][j] == true) {
 					System.out.print("X");
 				} else {
@@ -31,10 +31,10 @@ public class Jeu {
 		StdDraw.line(-0.5, m-0.5, n-0.5, m-0.5);
 		StdDraw.line(n-0.5, -0.5, n-0.5, m-0.5);
 
-		for(int i = 0; i < n; i++) {
-			for(int j = 0; j < m; j++) {
-				StdDraw.line(i-0.5, j-0.5, i-0.5, j+0.5);
-				StdDraw.line(i-0.5, j-0.5, i+0.5, j-0.5);
+		for(int i = 0; i < m; i++) {
+			for(int j = 0; j < n; j++) {
+				StdDraw.line(j-0.5, i-0.5, j-0.5, i+0.5);
+				StdDraw.line(j-0.5, i-0.5, j+0.5, i-0.5);
 				if(grille[i][j] == true) {
 					StdDraw.setPenColor(StdDraw.BLACK);
 					StdDraw.filledCircle(j, i, 0.5);

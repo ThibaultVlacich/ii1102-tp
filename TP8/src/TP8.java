@@ -21,9 +21,9 @@ public class TP8 {
 		int i=0;
 		
 		boolean [][] grille = {
-			{false, false, false},
-			{true,  true,  true },
-			{false, false, false}		
+			{false, false, true, false},
+			{true,  true,  true, false},
+			{false, true, false, false}		
 		};
 		
 		while(i++ < 1000) {
