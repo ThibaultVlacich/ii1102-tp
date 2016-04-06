@@ -16,18 +16,15 @@ public class TP8 {
 	}
 	
 	
-	private static void handle2D() {
-		
-		int i=0;
-		
+	private static void handle2D() {		
 		boolean [][] grille = {
 			{false, false, true, false},
 			{true,  true,  true, false},
 			{false, true, false, false}		
 		};
 		
-		while(i++ < 1000) {
-			if(StdDraw.isKeyPressed(nLetterKeycode)) {
+		while(true) {
+			if (StdDraw.hasNextKeyTyped() && StdDraw.isKeyPressed(nLetterKeycode)) {
 				grille = Jeu.step(grille);
 			}
 			
