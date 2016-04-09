@@ -22,6 +22,9 @@ public class TP8 {
 	 
 	}
 	
+	/**
+	 * Permet de gérer l'affichage en 2D du jeu
+	 */
 	private static void handle2D() {
 		
 		boolean[][] grille = defaultGrid;
@@ -36,10 +39,14 @@ public class TP8 {
 		while(true) {
 			if (StdDraw.hasNextKeyTyped()) {
 				if(StdDraw.isKeyPressed(nLetterKeycode)) {
+					// Appui sur la touche n
+					// Permet de passer à l'étape suivante du jeu
 					grille = Jeu.step(grille);
 				}
 				
 				if(StdDraw.isKeyPressed(sLetterKeycode)) {
+					// Appui sur la touche s
+					// Permet de sauvegarder l'état actuel du jeu
 					Jeu.save(grille, "save.txt");
 				}
 			}
@@ -50,7 +57,9 @@ public class TP8 {
 		}
 	}
 
-
+	/**
+	 * Permet de gérer l'affichage en mode console du jeu
+	 */
 	public static void handleConsole() {
 		boolean[][] grille = defaultGrid;
 		

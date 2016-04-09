@@ -8,6 +8,11 @@ import java.util.ArrayList;
 public class Jeu {
 	public static final int FPS = 5;
 	
+	/**
+	 * Permet d'afficher la grille en mode console
+	 * 
+	 * @param grille la grille à afficher
+	 */
 	public static void afficheConsole(boolean[][] grille) {
 		int m = grille.length;
 		int n = grille[0].length;
@@ -26,6 +31,11 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * Permet d'afficher la grille en 2D
+	 * 
+	 * @param grille la grille à afficher
+	 */
 	public static void affiche2D(boolean [][] grille) {
 		int m = grille.length;
 		int n = grille[0].length;
@@ -49,6 +59,15 @@ public class Jeu {
 		}
 	}
 	
+	/**
+	 * Permet de calculer le nombre de cellules vivantes autour
+	 * d'une cellule donnée
+	 * 
+	 * @param grille la grille du jeu
+	 * @param i la colonne de la cellule à vérifier
+	 * @param j la ligne de la cellule à vérifier
+	 * @return le nombre de cellules vivantes autour de la cellule donnée
+	 */
 	public static int comptage(boolean[][] grille, int i, int j) {
 		int m = grille.length;
 		int n = grille[0].length;
@@ -68,6 +87,12 @@ public class Jeu {
 	    return k;
 	}
 	
+	/**
+	 * Permet de calculer l'état suivant de la grille
+	 * 
+	 * @param grille l'état actuel de la grille
+	 * @return le nouvel état de la grille
+	 */
 	public static boolean[][] step(boolean[][] grille) {
 		int m = grille.length;
 		int n = grille[0].length;
@@ -91,6 +116,12 @@ public class Jeu {
 		return grilleNext;
 	}
 	
+	/**
+	 * Lire un fichier de sauvegarde
+	 * 
+	 * @param fichier le nom du fichier à lire
+	 * @return la grille lue à partir du fichier, null si le fichier n'existe pas
+	 */
 	public static boolean[][] read(String fichier) {
 			String line = null;
 			
@@ -131,6 +162,12 @@ public class Jeu {
 		    return convList;
 	}
 	
+	/**
+	 * Permet de sauvegarder la grille dans un fichier
+	 * 
+	 * @param grille la grille à sauvegarder
+	 * @param fileName le nom du fichier à écrire
+	 */
 	public static void save(boolean[][] grille, String fileName) {
 		StringBuffer ligne = new StringBuffer();
 		
