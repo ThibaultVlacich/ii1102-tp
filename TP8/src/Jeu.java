@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class Jeu {
 	public static final int FPS = 5;
@@ -83,5 +89,72 @@ public class Jeu {
 		}
 		
 		return grilleNext;
+	}
+	
+	public static boolean[][] read(String fichier) {
+			String line = null;
+			
+		    ArrayList<boolean[]> list = new ArrayList<boolean[]>();
+		    
+		    try {
+		        BufferedReader reader = new BufferedReader(new FileReader(fichier));
+		        
+		        while((line = reader.readLine()) != null) {
+		            line = line.replace(";", "");
+		            
+		            boolean[] lineB = new boolean[line.length()];
+		            
+		            for(int i = 0; i < line.length(); i++) {
+		            	boolean val = false;
+		            	
+		            	if (line.charAt(i) == '1'){
+		            		val = true;
+		            	}
+		            	
+		            	lineB[i] = val;
+		            }
+
+		            list.add(lineB);
+		        }
+		        
+		        reader.close();
+		    } catch (Exception e) {
+		        return null;
+		    }
+
+		    boolean[][] convList = new boolean[list.size()][list.get(0).length];
+
+		    for(int n = 0; n < list.size(); n++) {
+		         convList[n] = list.get(n); 
+		    }
+		    
+		    return convList;
+	}
+	
+	public static void save(boolean[][] grille, String fileName) {
+		StringBuffer ligne = new StringBuffer();
+		
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter(fileName,"UTF-8");
+		
+			for (boolean[] line : grille) {
+				for(boolean tile : line) {
+					String val = tile ? "1" : "0";
+					ligne.append(val + ";");
+				}
+				
+				writer.println(ligne);
+				ligne.delete(0, ligne.length());
+			}
+			
+			writer.close();
+			
+			System.out.println("Grille Sauvegardée");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 	}
 }
