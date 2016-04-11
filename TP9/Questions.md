@@ -4,14 +4,15 @@
 
 ### 2.1.1 Conception
 
-*Question 1 :*
+**Question 1 :**
 
 Il faut 3 entités :
 * Goban
 * Pierre
 * Joueur
 
-*Question 2 :*
+**Question 2 :**
+
 Entité Goban :
 * Taille : Int
 * Grille : [Pierre]
