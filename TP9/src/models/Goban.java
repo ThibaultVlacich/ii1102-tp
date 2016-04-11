@@ -1,4 +1,4 @@
-package jeudego;
+package models;
 
 import edu.princeton.cs.introcs.StdDraw;
 
@@ -35,11 +35,8 @@ public class Goban {
         
         if(plateau[i][j] != null) {
           Joueur joueur = plateau[i][j];
-          if(joueur.getCouleur().equalsIgnoreCase("noir")) {
-            StdDraw.setPenColor(StdDraw.BLACK);
-          } else {
-            StdDraw.setPenColor(StdDraw.RED);
-          }
+          
+          StdDraw.setPenColor(Couleur.getDrawColor(joueur.getCouleur()));
         
           StdDraw.filledCircle(j, i, 0.5);
         }
