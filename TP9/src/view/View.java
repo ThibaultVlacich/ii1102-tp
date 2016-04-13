@@ -27,19 +27,26 @@ public class View {
 
     StdDraw.clear(StdDraw.YELLOW);
     
-    // Dessine les graduations de la grille
+    StdDraw.setPenColor(StdDraw.BLACK);
+    
+    // Affiche les graduations de la grille
     for(int blabla = 0; blabla <= taille; blabla++) {
       // Abscisses
       StdDraw.text(blabla - 0.5, -1.5, Integer.toString(blabla));
       // Ordonnées
       StdDraw.text(-1.5, blabla - 0.5, Integer.toString(blabla));
     }
-
+    
+    // Dessine le quadrillage de la grille
     for(int i = 0; i < taille; i++) {
       for(int j = 0; j < taille; j++) {
-        StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.square(i, j, 0.5);
-        
+      }
+    }
+    
+    // Place les pions sur la grille
+    for(int i = 0; i <= taille; i++) {
+      for(int j = 0; j <= taille; j++) {
         if(goban.getPlateau(i, j) != null) {
           Joueur joueur = goban.getPlateau(i, j);
           

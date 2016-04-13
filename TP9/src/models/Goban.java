@@ -20,7 +20,7 @@ public class Goban {
   public Goban(int _taille) {
     this.taille = _taille;
     
-    plateau = new Joueur[this.taille][this.taille];
+    plateau = new Joueur[this.taille + 1][this.taille + 1];
   }
   
   public void modifier(int abscisse, int ordonnee, Joueur joueur){
