@@ -8,9 +8,9 @@ Réalisé par Thibault VLACICH et Hugo MICHARD
 - [x] Demander aux joueurs la taille du plateau
 - [x] Demander alternativement aux joueurs de jouer
 - [x] S'arréter quand les deux jeux ont passé
-- [ ] S'assurer que le coup demandé par le joueur est valide :
+- [x] S'assurer que le coup demandé par le joueur est valide :
   - [x] Est dans les limites du Goban
-  - [ ] La case n'est pas déjà prise
+  - [x] La case n'est pas déjà prise
   - [x] Redemander au joueur de jouer si son coup est invalide
 - [x] Afficher graphiquement le Goban
 
