@@ -32,8 +32,8 @@ public class Moteur {
   
   // Initialiser les différentes attributs de la classe
   private void init() {
-    joueur1 = new Joueur(Couleur.BLANC);
-    joueur2 = new Joueur(Couleur.NOIR);
+    joueur1 = new Joueur(Couleur.NOIR);
+    joueur2 = new Joueur(Couleur.BLANC);
     
     int taille = 0;
     
