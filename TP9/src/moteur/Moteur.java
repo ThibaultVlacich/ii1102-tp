@@ -70,49 +70,88 @@ public class Moteur {
   
   // Gère le tour du joueur
   private Joueur tourDeJeu(Joueur joueur) {
-    System.out.println("Tour du joueur "+Couleur.getColorName(joueur.getCouleur()));
+    String playerColor = Couleur.getColorName(joueur.getCouleur());
+    
+    System.out.println("Tour du joueur " + playerColor);
   
     System.out.println("Voulez-vous passer votre tour ? (O/N)");
   
     String commande = Utils.scan.next();
   
     if(commande.equalsIgnoreCase("o")){
+      // Le joueur a choisi de passer
       joueur.setPassed(true);
       
       return joueur;
     }
   
-    System.out.println("Choisissez une case");
+    int abscisse, ordonnee;
+    int[] choice;
+    
+    System.out.println("Veuillez choisir une intersection :");
+    
+    choice = this.askForIntersectionChoice();
+    
+    abscisse = choice[0];
+    ordonnee = choice[1];
+    
+    // Vérifions que la case n'est pas déjà prise
+    while (!isIntersectionFree(abscisse, ordonnee)) {
+      // La case n'est pas libre !
+      System.out.println("La case que vous avez choisie est déjà prise, veuillez en choisir une autre !");
+      
+      choice = this.askForIntersectionChoice();
+      
+      abscisse = choice[0];
+      ordonnee = choice[1];
+    }
+    
+    // Assignons la case choisie au joueur
+    goban.modifier(abscisse, ordonnee, joueur);
+    
+    return joueur;
+  }
   
-    System.out.println("Abscisse : ");
+  // Demande au joueur de saisir les coordonnées de la case qu'il souhaite contrôler
+  private int[] askForIntersectionChoice() {
+    System.out.println("Abscisse :");
     int abscisse = Utils.scan.nextInt();
   
     while (abscisse < 0 || abscisse > goban.getTaille()) {
       if(abscisse < 0){
-        System.out.println("La valeur choisie en abscisse est négative, veuillez en saisir une positive ! ");
-        abscisse = Utils.scan.nextInt();
+        System.out.println("La valeur choisie en abscisse est négative, veuillez en saisir une positive !");
       } else {
-        System.out.println("La valeur choisie en abscisse est supérieure à " +goban.getTaille()+", veuillez saisir une valeur plus faible ! ");
-        abscisse = Utils.scan.nextInt();
+        System.out.println("La valeur choisie en abscisse est supérieure à " + goban.getTaille() + ", veuillez saisir une valeur plus faible !");
       }
+      
+      abscisse = Utils.scan.nextInt();
     }
     
-    System.out.println("Ordonnée : ");
+    System.out.println("Ordonnée :");
     int ordonnee = Utils.scan.nextInt();
     
     while (ordonnee < 0 || ordonnee > goban.getTaille()){
       if(ordonnee < 0){
-        System.out.println("La valeur choisie en ordonnee est négative, veuillez en saisir une positive ! ");
-        ordonnee = Utils.scan.nextInt();
+        System.out.println("La valeur choisie en ordonnée est négative, veuillez en saisir une positive ! ");
       } else {
-        System.out.println("La valeur choisie en ordonnee est supérieure à " +goban.getTaille()+", veuillez saisir une valeur plus faible ! ");
-        ordonnee = Utils.scan.nextInt();
+        System.out.println("La valeur choisie en ordonnée est supérieure à " + goban.getTaille() + ", veuillez saisir une valeur plus faible !");
       }
+      
+      ordonnee = Utils.scan.nextInt();
     }
     
-    goban.modifier(abscisse, ordonnee, joueur);
+    int[] returnValue = {abscisse, ordonnee};
     
-    return joueur;
+    return returnValue;
+  }
+  
+  // Vérifie si la case est libre
+  public boolean isIntersectionFree(int i, int j) {
+    if(goban.getPlateau(i, j) == null) {
+      return true;
+    }
+    
+    return false;
   }
   
   // Fin de la partie
