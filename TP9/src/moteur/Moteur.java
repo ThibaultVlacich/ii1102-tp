@@ -43,6 +43,8 @@ public class Moteur {
       taille = Utils.scan.nextInt();
     }
     
+    System.out.println("");
+    
     goban = new Goban(taille);
   }
   
@@ -105,6 +107,8 @@ public class Moteur {
       abscisse = choice[0];
       ordonnee = choice[1];
     }
+    
+    System.out.println("");
     
     // Assignons la case choisie au joueur
     goban.modifier(abscisse, ordonnee, joueur);

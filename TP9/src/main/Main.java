@@ -15,9 +15,10 @@ import moteur.Moteur;
 public class Main {
 
   public static void main(String[] args) {
-    System.out.println("### Algorithmique et programmation - TP4 ###");
-    System.out.println("### Fait par Thibault VLACICH et Hugo MICHARD ###");
-    System.out.println("### Jeu de Go ###");
+    System.out.println("###\t\tAlgo et programmation - TP9\t\t###");
+    System.out.println("###\tFait par Thibault VLACICH et Hugo MICHARD\t###");
+    System.out.println("###\t\t\tJeu de Go\t\t\t###");
+    System.out.println("");
     
     Moteur m = new Moteur();
     
