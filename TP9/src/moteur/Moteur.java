@@ -9,12 +9,13 @@ package moteur;
  * @author Hugo Michard
  */
 
-import java.util.Scanner;
-
 import main.Utils;
+
 import models.Couleur;
 import models.Goban;
 import models.Joueur;
+
+import view.View;
 
 public class Moteur {
   // Liste des joueurs
@@ -59,12 +60,15 @@ public class Moteur {
       
       joueurActuel = tourDeJeu(joueurActuel);
       
+      View.drawGoban(goban);
+      
       joueurActuel = (joueurActuel == joueur1) ? joueur2 : joueur1;
     }
     
     endGame();
   }
   
+  // Gère le tour du joueur
   private Joueur tourDeJeu(Joueur joueur) {
     System.out.println("Tour du joueur "+Couleur.getColorName(joueur.getCouleur()));
   

@@ -15,7 +15,6 @@ import moteur.Moteur;
 public class Main {
 
   public static void main(String[] args) {
-
     System.out.println("### Algorithmique et programmation - TP4 ###");
     System.out.println("### Fait par Thibault VLACICH et Hugo MICHARD ###");
     System.out.println("### Jeu de Go ###");
