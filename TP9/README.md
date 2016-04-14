@@ -7,7 +7,7 @@ Réalisé par Thibault VLACICH et Hugo MICHARD
 ### Partie 1
 - [x] Demander aux joueurs la taille du plateau
 - [x] Demander alternativement aux joueurs de jouer
-- [x] S'arréter quand les deux jeux ont passé
+- [x] S'arrêter quand les deux joueurs ont passé
 - [x] S'assurer que le coup demandé par le joueur est valide :
   - [x] Est dans les limites du Goban
   - [x] La case n'est pas déjà prise
