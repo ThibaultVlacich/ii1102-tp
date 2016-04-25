@@ -108,7 +108,7 @@ public class View {
         
         // Tempo pour éviter que StdDraw.mousePressed() reste à true
         try {
-          Thread.sleep(100);
+          Thread.sleep(200);
         } catch (Exception e) { }
         
         if (y < 1 || y > 3) {

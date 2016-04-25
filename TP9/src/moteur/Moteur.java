@@ -84,7 +84,7 @@ public class Moteur {
         
         // Tempo pour éviter que StdDraw.mousePressed() reste à true
         try {
-          Thread.sleep(100);
+          Thread.sleep(200);
         } catch (Exception e) { }
         
         System.out.println("Abscisse : "+abscisse+", ordonnée : "+ordonnee);
