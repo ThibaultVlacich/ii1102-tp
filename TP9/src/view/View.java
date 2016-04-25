@@ -18,19 +18,19 @@ import models.Goban;
 import models.Joueur;
 
 public class View {
-  public static void drawGoban(Goban goban) {
-    drawGoban(goban, false);
+  public static void drawGoban(Goban goban, Joueur joueurActuel) {
+    drawGoban(goban, joueurActuel, false);
   }
   
   // Permet d'afficher le plateau de jeu
-  public static void drawGoban(Goban goban, Boolean firstTime) {
+  public static void drawGoban(Goban goban, Joueur joueurActuel, Boolean firstTime) {
     int taille = goban.getTaille();
     
     if (firstTime) {
-      StdDraw.setCanvasSize(500, 500);
+      StdDraw.setCanvasSize(500, 600);
       
       StdDraw.setXscale(-1, taille + 1);
-      StdDraw.setYscale(-1, taille + 1);
+      StdDraw.setYscale(-1, taille + 2);
     }
 
     StdDraw.clear(StdDraw.YELLOW);
@@ -51,6 +51,16 @@ public class View {
         StdDraw.square(i + 0.5, j + 0.5, 0.5);
       }
     }
+    
+    // Affiche le bouton pour passer son tour
+    StdDraw.rectangle(taille - 1.5, taille + 1.5, 1.5, 0.5);
+    StdDraw.text(taille - 1.5, taille + 1.5, "Passer");
+    
+    // Affiche qui est le joueur qui joue actuellement
+    StdDraw.rectangle(1.5, taille + 1.5, 1.5, 0.5);
+    StdDraw.textLeft(0.2, taille + 1.5, "Joueur : ");
+    StdDraw.setPenColor(Couleur.getDrawColor(joueurActuel.getCouleur()));
+    StdDraw.filledCircle(2.3, taille + 1.5, 0.4);
     
     // Place les pions sur la grille
     for(int i = 0; i <= taille; i++) {

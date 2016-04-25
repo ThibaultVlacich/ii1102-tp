@@ -46,11 +46,11 @@ public class Moteur {
   public void startGame() {
     Joueur joueurActuel;
     
-    // On dessine le plateau de jeu initial
-    View.drawGoban(goban, true);
-    
     // Le joueur 1 commence
     joueurActuel = joueur1;
+    
+    // On dessine le plateau de jeu initial
+    View.drawGoban(goban, joueurActuel, true);
     
     while (true) {
       if (joueur1.passed() && joueur2.passed()) {
@@ -59,9 +59,9 @@ public class Moteur {
       
       joueurActuel = tourDeJeu(joueurActuel);
       
-      View.drawGoban(goban);
-      
       joueurActuel = (joueurActuel == joueur1) ? joueur2 : joueur1;
+      
+      View.drawGoban(goban, joueurActuel);
     }
     
     endGame();
@@ -72,17 +72,6 @@ public class Moteur {
     String playerColor = Couleur.getColorName(joueur.getCouleur());
     
     System.out.println("Tour du joueur " + playerColor);
-  
-    /*System.out.println("Voulez-vous passer votre tour ? (O/N)");
-  
-    String commande = Utils.scan.next();
-  
-    if(commande.equalsIgnoreCase("o")){
-      // Le joueur a choisi de passer
-      joueur.setPassed(true);
-      
-      return joueur;
-    }*/
   
     int abscisse, ordonnee;
     
@@ -99,6 +88,24 @@ public class Moteur {
         } catch (Exception e) { }
         
         System.out.println("Abscisse : "+abscisse+", ordonnée : "+ordonnee);
+        
+        // Le joueur a-t-il cliqué sur le bouton passer ?
+        if (
+            abscisse >= goban.getTaille() - 3
+            && abscisse <= goban.getTaille()
+            && ordonnee >= goban.getTaille() + 1
+            && ordonnee <= goban.getTaille() + 2
+            ) {
+          System.out.println("Vous avez passé votre tour.");
+          joueur.setPassed(true);
+          
+          return joueur;
+        }
+        
+        // Vérifions que l'abscisse et l'ordonnée cliquée n'est pas hors grille
+        if (abscisse < 0 || abscisse > goban.getTaille() || ordonnee < 0 || ordonnee > goban.getTaille()) {
+          continue;
+        }
         
         // Vérifions que la case est bien libre
         if (isIntersectionFree(abscisse, ordonnee)) {
