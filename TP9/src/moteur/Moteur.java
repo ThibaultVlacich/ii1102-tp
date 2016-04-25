@@ -37,15 +37,7 @@ public class Moteur {
     joueur1 = new Joueur(Couleur.NOIR);
     joueur2 = new Joueur(Couleur.BLANC);
     
-    int taille = 0;
-    
-    while ((taille != 9 && taille != 13 && taille != 19)) {
-      System.out.println("Veuillez saisir la taille de la grille (9, 13 ou 19)");
-    
-      taille = Utils.scan.nextInt();
-    }
-    
-    System.out.println("");
+    int taille = View.drawGridSizeChoice();
     
     goban = new Goban(taille);
   }
@@ -55,7 +47,7 @@ public class Moteur {
     Joueur joueurActuel;
     
     // On dessine le plateau de jeu initial
-    View.drawGoban(goban);
+    View.drawGoban(goban, true);
     
     // Le joueur 1 commence
     joueurActuel = joueur1;
@@ -81,7 +73,7 @@ public class Moteur {
     
     System.out.println("Tour du joueur " + playerColor);
   
-    System.out.println("Voulez-vous passer votre tour ? (O/N)");
+    /*System.out.println("Voulez-vous passer votre tour ? (O/N)");
   
     String commande = Utils.scan.next();
   
@@ -90,7 +82,7 @@ public class Moteur {
       joueur.setPassed(true);
       
       return joueur;
-    }
+    }*/
   
     int abscisse, ordonnee;
     
@@ -98,8 +90,13 @@ public class Moteur {
     
     while (true) {
       if (StdDraw.mousePressed()) {
-        abscisse = (int) Math.round(StdDraw.mouseX());
-        ordonnee = (int) Math.round(StdDraw.mouseY());
+        abscisse = (int) Math.round(StdDraw.mouseY());
+        ordonnee = (int) Math.round(StdDraw.mouseX());
+        
+        // Tempo pour éviter que StdDraw.mousePressed() reste à true
+        try {
+          Thread.sleep(100);
+        } catch (Exception e) { }
         
         System.out.println("Abscisse : "+abscisse+", ordonnée : "+ordonnee);
         
@@ -111,8 +108,6 @@ public class Moteur {
         }
       }
     }
-    
-    System.out.println("");
     
     // Assignons la case choisie au joueur
     goban.modifier(abscisse, ordonnee, joueur);
