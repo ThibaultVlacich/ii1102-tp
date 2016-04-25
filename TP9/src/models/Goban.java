@@ -36,7 +36,7 @@ public class Goban {
   }
   
   public Joueur getPlateau(int i, int j) {
-    return this.plateau[i][j];
+    return this.plateau[j][i];
   }
   
 }
