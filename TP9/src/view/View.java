@@ -60,7 +60,7 @@ public class View {
           
           StdDraw.setPenColor(Couleur.getDrawColor(joueur.getCouleur()));
         
-          StdDraw.filledCircle(j, i, 0.4);
+          StdDraw.filledCircle(i, j, 0.4);
         }
       }
     }

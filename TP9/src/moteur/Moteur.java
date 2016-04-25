@@ -90,8 +90,8 @@ public class Moteur {
     
     while (true) {
       if (StdDraw.mousePressed()) {
-        abscisse = (int) Math.round(StdDraw.mouseY());
-        ordonnee = (int) Math.round(StdDraw.mouseX());
+        abscisse = (int) Math.round(StdDraw.mouseX());
+        ordonnee = (int) Math.round(StdDraw.mouseY());
         
         // Tempo pour éviter que StdDraw.mousePressed() reste à true
         try {

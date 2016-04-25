@@ -24,7 +24,7 @@ public class Goban {
   }
   
   public void modifier(int abscisse, int ordonnee, Joueur joueur){
-    this.plateau[ordonnee][abscisse] = joueur;
+    this.plateau[abscisse][ordonnee] = joueur;
   }
  
   public Joueur[][] getPlateau() {
@@ -35,8 +35,8 @@ public class Goban {
     return taille;
   }
   
-  public Joueur getPlateau(int i, int j) {
-    return this.plateau[j][i];
+  public Joueur getPlateau(int abscisse, int ordonnee) {
+    return this.plateau[abscisse][ordonnee];
   }
   
 }
