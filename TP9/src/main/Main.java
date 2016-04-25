@@ -13,7 +13,6 @@ package main;
 import moteur.Moteur;
 
 public class Main {
-
   public static void main(String[] args) {
     System.out.println("###\t\tAlgo et programmation - TP9\t\t###");
     System.out.println("###\tFait par Thibault VLACICH et Hugo MICHARD\t###");
@@ -26,5 +25,4 @@ public class Main {
     
     Utils.scan.close();
   }
-  
 }

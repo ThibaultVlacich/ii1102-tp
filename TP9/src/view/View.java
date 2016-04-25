@@ -22,8 +22,8 @@ public class View {
   public static void drawGoban(Goban goban) {
     int taille = goban.getTaille();
     
-    StdDraw.setXscale(-2, taille + 1);
-    StdDraw.setYscale(-2, taille + 1);
+    StdDraw.setXscale(-1, taille + 1);
+    StdDraw.setYscale(-1, taille + 1);
 
     StdDraw.clear(StdDraw.YELLOW);
     
@@ -32,15 +32,15 @@ public class View {
     // Affiche les graduations de la grille
     for(int blabla = 0; blabla <= taille; blabla++) {
       // Abscisses
-      StdDraw.text(blabla - 0.5, -1.5, Integer.toString(blabla));
+      StdDraw.text(blabla, -0.5, Integer.toString(blabla));
       // Ordonnées
-      StdDraw.text(-1.5, blabla - 0.5, Integer.toString(blabla));
+      StdDraw.text(-0.5, blabla, Integer.toString(blabla));
     }
     
     // Dessine le quadrillage de la grille
     for(int i = 0; i < taille; i++) {
       for(int j = 0; j < taille; j++) {
-        StdDraw.square(i, j, 0.5);
+        StdDraw.square(i + 0.5, j + 0.5, 0.5);
       }
     }
     
@@ -52,7 +52,7 @@ public class View {
           
           StdDraw.setPenColor(Couleur.getDrawColor(joueur.getCouleur()));
         
-          StdDraw.filledCircle(j - 0.5, i - 0.5, 0.4);
+          StdDraw.filledCircle(j, i, 0.4);
         }
       }
     }
