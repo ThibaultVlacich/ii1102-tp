@@ -108,17 +108,30 @@ public class Moteur {
         }
         
         // Vérifions que la case est bien libre
-        if (isIntersectionFree(abscisse, ordonnee)) {
+        if (isIntersectionFree(abscisse, ordonnee) && canTakeIntersection(abscisse, ordonnee, joueur)) {
           break;
         } else {
           System.out.println("La case que vous avez choisie est déjà prise, veuillez en choisir une autre !");
         }
+               
       }
     }
     
     // Assignons la case choisie au joueur
     goban.modifier(abscisse, ordonnee, joueur);
     
+    if (abscisse > 0)
+      testOpponent(abscisse-1,ordonnee,joueur);
+    
+    if (abscisse < goban.getTaille())
+      testOpponent(abscisse+1,ordonnee,joueur);
+    
+    if (ordonnee > 0)
+      testOpponent(abscisse,ordonnee-1,joueur);
+    
+    if (ordonnee < goban.getTaille())
+      testOpponent(abscisse,ordonnee+1,joueur);
+      
     return joueur;
   }
   
@@ -131,6 +144,62 @@ public class Moteur {
     return false;
   }
   
+  public boolean canTakeIntersection(int i, int j, Joueur joueur) {
+    int libertes = goban.getLibertes(i, j, joueur);
+    int libertespropres = goban.getLibertespropre(i, j, joueur);
+    System.out.println(libertes);
+
+    System.out.println(libertespropres);
+    
+    if(libertespropres == 0){
+      if(libertes > 1){
+        return true;
+      } else{
+        return false;
+      } 
+    }
+    else{
+      if(libertes > 0){
+        return true;
+      } else{
+        return false;
+      }
+    }
+
+  }
+  
+  //Vérifie la vivacité de l'adversaire et prend les mesures nécessa
+  private void testOpponent(int i, int j, Joueur joueur){
+    Joueur autreJoueur = (joueur == joueur1) ? joueur2 : joueur1;
+    
+    if(goban.getPlateau(i, j) == autreJoueur){
+      int libertes = goban.getLibertes(i, j, autreJoueur);
+      System.out.println(libertes); 
+      System.out.println(autreJoueur.getCouleur());
+
+      if(libertes == 0){
+        deleteGroupe(i, j, autreJoueur);
+      }
+    }
+  }
+  
+  //Supprime le groupe qui touche i,j
+  private void deleteGroupe(int i, int j, Joueur joueur){
+    goban.modifier(i, j, null);
+    if(i > 0 && goban.getPlateau(i-1,j) == joueur){
+      deleteGroupe(i-1, j, joueur);
+    }
+    if(j > 0 && goban.getPlateau(i,j-1) == joueur){
+      deleteGroupe(i, j-1, joueur);
+    }
+    if(j < goban.getTaille() && goban.getPlateau(i,j+1) == joueur){
+      deleteGroupe(i, j+1, joueur);
+    }
+    if(i < goban.getTaille() && goban.getPlateau(i+1,j) == joueur){
+      deleteGroupe(i+1, j, joueur);
+    }
+  }
+    
   // Fin de la partie
   private void endGame() {
     System.out.println("Partie terminée");

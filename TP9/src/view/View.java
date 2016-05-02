@@ -33,7 +33,7 @@ public class View {
       StdDraw.setYscale(-1, taille + 2);
     }
 
-    StdDraw.clear(StdDraw.YELLOW);
+    StdDraw.clear(StdDraw.WHITE);
     
     StdDraw.setPenColor(StdDraw.BLACK);
     
@@ -61,6 +61,8 @@ public class View {
     StdDraw.textLeft(0.2, taille + 1.5, "Joueur : ");
     StdDraw.setPenColor(Couleur.getDrawColor(joueurActuel.getCouleur()));
     StdDraw.filledCircle(2.3, taille + 1.5, 0.4);
+    StdDraw.setPenColor(StdDraw.BLACK);
+    StdDraw.circle(2.3, taille + 1.5, 0.4);
     
     // Place les pions sur la grille
     for(int i = 0; i <= taille; i++) {
@@ -71,6 +73,8 @@ public class View {
           StdDraw.setPenColor(Couleur.getDrawColor(joueur.getCouleur()));
         
           StdDraw.filledCircle(i, j, 0.4);
+          StdDraw.setPenColor(StdDraw.BLACK);
+          StdDraw.circle(i, j, 0.4);
         }
       }
     }
