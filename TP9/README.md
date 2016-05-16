@@ -15,6 +15,6 @@ Réalisé par Thibault VLACICH et Hugo MICHARD
 - [x] Afficher graphiquement le Goban
 
 ### Partie 2
-- [ ] Gestion des pierres mortes/vivantes
-  - [ ] Implémenter l'algo de la fonction getGroupe
-  - [ ] Implémenter la fonction applyMove
+- [x] Gestion des pierres mortes/vivantes
+  - [x] Implémenter l'algo de la fonction getGroupe
+  - [x] Implémenter la fonction applyMove
