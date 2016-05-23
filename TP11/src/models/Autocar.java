@@ -21,7 +21,7 @@ public class Autocar extends Vehicule {
     System.out.println("Nombre de passagers dans l'autocar : "+nbPassagers);
   }
   
-  public Boolean peuxTransporterPassagers(int _nbPassagers, int _volume) {
+  public Boolean peuxTransporterPassagers(int _nbPassagers, double _volume) {
     return (nbPassagers >= _nbPassagers && volume >= _volume);
   }
 }
