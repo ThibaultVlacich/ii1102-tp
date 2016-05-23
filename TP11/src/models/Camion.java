@@ -8,4 +8,24 @@ public class Camion extends Vehicule {
     
     volume = _volume;
   }
+  
+  /**
+   * Permet d'afficher une chaîne de caractère décrivant le camion
+   */
+  public void afficherCamion() {
+    super.afficherVehicule();
+    
+    System.out.println("Volume de stockage du camion : "+volume);
+  }
+  
+  /**
+   * Détermine si le camion peut transporter un volume donner
+   * 
+   * @param _volume Le volume à transporter
+   * 
+   * @return  Boolean
+   */
+  public Boolean peutTransporterVolume(int _volume) {
+    return (volume > _volume);
+  }
 }

@@ -10,4 +10,18 @@ public class Autocar extends Vehicule {
     volume      = _volume;
     nbPassagers = _nbPassagers;
   }
+  
+  /**
+   * Permet d'afficher une chaîne de caractère décrivant l'autocar
+   */
+  public void afficherAutocar() {
+    super.afficherVehicule();
+    
+    System.out.println("Volume de stockage de l'autocar : "+volume);
+    System.out.println("Nombre de passagers dans l'autocar : "+nbPassagers);
+  }
+  
+  public Boolean peuxTransporterPassagers(int _nbPassagers, int _volume) {
+    return (nbPassagers >= _nbPassagers && volume >= _volume);
+  }
 }
