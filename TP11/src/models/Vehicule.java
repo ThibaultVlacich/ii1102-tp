@@ -26,8 +26,6 @@ public abstract class Vehicule {
   public final int age() {
     int anneeActuelle = Year.now().getValue();
     
-    System.out.print(anneeActuelle);
-    
     return anneeActuelle - anneeAchat;
   }
   
