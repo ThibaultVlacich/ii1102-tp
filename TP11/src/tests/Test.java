@@ -30,7 +30,7 @@ public class Test {
     
     FRI.afficherAutocar();
     
-    System.out.println("Cet autocar peut-il transporter 40 passagers ayant chacun 0,1 m3 de baggage ? "+FRI.peuxTransporterPassagers(40, 40*0.1) ? "Oui" : "Non");
+    System.out.println("Cet autocar peut-il transporter 40 passagers ayant chacun 0,1 m3 de baggage ? "+(FRI.peuxTransporterPassagers(40, 40*0.1) ? "Oui" : "Non"));
     
     System.out.println();
   }
